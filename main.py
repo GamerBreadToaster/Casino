@@ -1,5 +1,5 @@
 # made by GamerBreadToaster
-# goto https://github.com/GamerBreadToaster/ for more
+# for more go to https://github.com/GamerBreadToaster/
 
 # imports
 import os,random,time
@@ -295,12 +295,12 @@ if GameOver == True:
     if os.path.isfile(path_gamestats):
         with open(path_gamestats, "a") as file:
             file.write(
-                f"times won : {wins:.0f}\ntimes lost: {loses:.0f}\nmoney won : {money_won_total:.0f}\nmoney lost: {money_lost_total:.0f}\ntotal play time: {time_played_file:.0f} seconds\n\n"
+                f"times won : {wins:.0f}\ntimes lost: {loses:.0f}\ntimes played: {games_played:.0f}\nmoney won : {money_won_total:.0f}\nmoney lost: {money_lost_total:.0f}\ntotal play time: {time_played_file:.0f} seconds\n\n"
                 )
     else:
         with open(path_gamestats, "w") as file:
             file.write(
-                f"|| welcome to your game stats ||\n\ntimes won : {wins:.0f}\ntimes lost: {loses:.0f}\nmoney won : {money_won_total:.0f}\nmoney lost: {money_lost_total:.0f}\ntotal play time: {time_played_total:.0f} seconds\n\n"
+                f"|| welcome to your game stats ||\n\ntimes won : {wins:.0f}\ntimes lost: {loses:.0f}\ntimes played: {games_played:.0f}\nmoney won : {money_won_total:.0f}\nmoney lost: {money_lost_total:.0f}\ntotal play time: {time_played_total:.0f} seconds\n\n"
                 )
     with open(path, "w") as file:
         file.write(f"{500:.0f}\n{0:.0f}\n{0:.0f}\n{0:.0f}\n{0}\n{0}\n0")
