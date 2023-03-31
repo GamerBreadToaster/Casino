@@ -1,3 +1,5 @@
+# made by GamerBreadToaster
+
 import os
 def bets(bet, money, minimum_bet, bet_limit):
     exit_bets = False
