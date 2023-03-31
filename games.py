@@ -1,3 +1,5 @@
+# made by GamerBreadToaster
+
 import os,random,time
 
 def RPC():
