@@ -1,3 +1,6 @@
+# made by GamerBreadToaster
+# goto https://github.com/GamerBreadToaster/ for more
+
 # imports
 import os,random,time
 from games import slots, coin_flip, RPC
