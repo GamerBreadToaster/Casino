@@ -35,21 +35,23 @@ path_time_played = "time played.txt"
 games_played += 1
 
 def clear_and_see(): # this def makes it clear how much money, wins and loses you have.
-    os.system('cls')
-    print("money:", money, "| wins :", wins)
-    print("bet  :", bet, "| loses:", loses)
-    print("total games played:", games_played)
-    print("total money won   :", money_won_total)
-    print("total money lost  :", money_lost_total)
-    print(" ")
+    os.system('cls') # clearing
+    print("money:", money, "| wins :", wins)       # 
+    print("bet  :", bet, "| loses:", loses)        # 
+    print("total games played:", games_played)     # this is to display most of your stats
+    print("total money won   :", money_won_total)  # 
+    print("total money lost  :", money_lost_total) # 
+    print(" ") # to make some space
 
-def save():
-    with open(path, "w") as file:
+def save(): # a define for saving to make it easier to save.
+    with open(path, "w") as file: # opens save file
         file.write(f"{money:.0f}\n{bet:.0f}\n{wins:.0f}\n{loses:.0f}\n{money_won_total:.0f}\n{money_lost_total:.0f}\n{games_played:.0f}") # writes the money, wins and loses in the SafeFile.txt
+        
 for b in range(2):
     if os.path.isfile(path): # to search for the save file at je beginning of the program
         with open(path, "r") as file: # opens the safe file
             readlines = file.readlines() # reads all the lines
+            
     else: # if there is no file it will make one
         money = 500 # beginning money
         time_played_total = 0
@@ -79,7 +81,7 @@ while GameOver == False: # so the program will always continue until gameover
         break
     
     # minigames
-    while choose == 1: # not implemented yet
+    while choose == 1: # fully done, is the minigame
         if money <= 0: # checks if money is or is under 0.
             GameOver = True # makes GameOver True and after breaks to exit program
             break
@@ -94,41 +96,53 @@ while GameOver == False: # so the program will always continue until gameover
         
         if minigame == 0: # if you choose 0 it will exit the minigame and go to the main.
             break
+
         if minigame == 1:
-            bet, exit_bet = bets(bet, money, 1, 250) # here it gives the bets import the amount you've alreade bet, your money, bet minimum and bet limit.
+            bet, exit_bet = bets(bet, money, 1, 500) # here it gives the bets import the amount you've alreade bet, your money, bet minimum and bet limit.
+
         if minigame == 2:
-            bet, exit_bet = bets(bet, money, 1, 250) # same here as with above.
+            bet, exit_bet = bets(bet, money, 1, 500) # same here as with above.
+            
         if exit_bet == True:
             break
+        
         money -= bet # after you have bet the money you have will be subtracted from the bet.
-        money_lost = bet
+        money_lost = bet # dont know why its here, but it works so i won't touch it
         exit_bets = False
         
-        if minigame == 1:
-            win, lose = coin_flip()
+        if minigame == 1: # this is the coin flipping
+            
+            win, lose = coin_flip() # for returning if there is an win or lose
+            
+            # if you have won from the bot
             if win == True:
-                wins += 1
-                games_played += 1
-                money_won = bet * 2
-                money += money_won
-                money_won = bet / 2
+                wins += 1           # 
+                games_played += 1   # for counting
+                money_won = bet * 2 # to make sure you get your money back
+                money += money_won  # gives you the money
+                money_won = bet / 2 # to correct the amount of money you actually won
                 clear_and_see()
                 print("you have won!")
                 print("your bet has been doubled")
-                print("you won the amount of:", (money_won * 2))
+                print("you won the amount of:", (money_won * 2)) # so you can see how much you have won
+            
+            # if you lose from the bot
             if lose == True:
-                loses += 1
-                games_played += 1
+                loses += 1        # 
+                games_played += 1 # more counting
                 clear_and_see()
-                money_lost = bet
+                money_lost = bet  # repeat? won't touch it because it just works
                 print("you lost :(")
-                print("and you have lost:", money_lost)
-                print("your bet is now in the backrooms")
-            money_won_total += money_won
-            money_lost_total += money_lost
-            os.system('pause')
+                print("and you have lost:", money_lost)   # to visualise the amount of money you lost
+                print("your bet is now in the backrooms") # haha funny
+            money_won_total += money_won   #
+            money_lost_total += money_lost # for counting
+            os.system('pause') # pauses so you can actually see what there is on screen
         
+        # Rock Paper Scissors
         if minigame == 2:
+        
+            # basically all the same as above exept you can tie with the bot
             tied, win, lose = RPC()
             if win == True:
                 wins += 1
@@ -151,8 +165,8 @@ while GameOver == False: # so the program will always continue until gameover
             if tied == True:
                 games_played += 1
                 money_lost = bet
-                money += money_won
-                money_lost = 0
+                money += money_lost # corrected mistake
+                money_lost = 0 # you dont actually lose money if you tie, so the amount lost is actually 0 then.
                 clear_and_see()
                 print("You have tied with the bot")
                 print("you get your bet back")
